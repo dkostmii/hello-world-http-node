@@ -1,20 +1,19 @@
 const http = require('http');
 
+const indexController = require('./controllers')
+const { helloWorldController } = indexController
+
 const requestListener = function (req, res) {
-    let message;
     console.log(`Request: ${req.url}`)
 
     switch (req.url) {
         case '/helloworld':
-            message = 'Oh, you found another Hello, World!'
+            helloWorldController(req, res);
             break;
         default:
-            message = 'Hello, World!'
+            indexController(req, res);
             break;
     }
- 
-    res.writeHead(200);
-    res.end(message);
 }
 
 const server = http.createServer(requestListener);
