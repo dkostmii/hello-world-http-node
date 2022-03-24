@@ -4,9 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "start-dev": "nodemon index.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "Dmytro-Andrii Kostelnyi <dmitrokostelny95@gmail.com>",
+  "license": "ISC",
+  "repository": "git@github.com:dkostmii/hello-world-http-node.git",
+  "dependencies": {
+    "dotenv": "^16.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
