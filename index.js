@@ -1,21 +1,15 @@
 const http = require('http');
 
-const indexController = require('./controllers')
-const { helloWorldController } = indexController
+// load variables from .env file
+require('dotenv').config();
 
-const requestListener = function (req, res) {
-    console.log(`Request: ${req.url}`)
+// get the App instance
+const App = require('./src/App')()
 
-    switch (req.url) {
-        case '/helloworld':
-            helloWorldController(req, res);
-            break;
-        default:
-            indexController(req, res);
-            break;
-    }
+let port = 80;
+
+if (typeof process.env.PORT !== 'undefined') {
+    port = parseInt(process.env.PORT)
 }
 
-const server = http.createServer(requestListener);
-server.listen(8080);
-console.log("Server is listening on http://localhost:8080/")
+App.run(http.createServer, port);
